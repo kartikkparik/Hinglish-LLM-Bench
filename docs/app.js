@@ -3,8 +3,11 @@
  * relative to this file. Configure RESULTS_BASE if the dashboard is hosted
  * somewhere the results/ folder is not a sibling of docs/. */
 
-const RESULTS_BASE = "../results/";   // GitHub Pages: repo root sibling of docs/
-const DATASET_URL = "../data/hinglish_bench_150.jsonl";
+/* Paths are relative to docs/ because GitHub Pages serves docs/ as the
+ * site root. Mirrored copies of results/, assets/, and data/ live inside
+ * docs/ — regenerate them with scripts/sync_docs.sh after a new GPU run. */
+const RESULTS_BASE = "./results/";
+const DATASET_URL = "./data/hinglish_bench_150.jsonl";
 
 const state = {
   summary: [],          // rows from summary_metrics.csv

@@ -1,0 +1,3 @@
+model,n_items,exact_match_acc,normalized_match_acc,mean_cosine_sim,ms_per_token,cmi_robustness_drop
+HuggingFaceTB/SmolLM2-1.7B-Instruct,150,0.0533,0.0933,0.3281,13.199,0.0
+Qwen/Qwen2.5-1.5B-Instruct,150,0.1267,0.22,0.4036,12.631,0.1
