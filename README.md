@@ -107,7 +107,7 @@ Runs fully on CPU (no model weights required).
 
 ## Results
 
-Evaluation completed on a single NVIDIA T4 (Google Colab), fp16, greedy
+Evaluation completed on a single NVIDIA T4 GPU, fp16, greedy
 decoding, 150 items per model.
 
 | Artifact | Path | Status |
