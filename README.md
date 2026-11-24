@@ -23,8 +23,8 @@ similarity, token-level latency, and a CMI robustness drop metric, and publish
 an error taxonomy covering idiom mistranslation, negation/scope confusion,
 entity/number hallucination, and language drift.
 
-> **Status:** dataset + pipeline complete; GPU metrics pending — see
-> [Results](#results) placeholders below.
+> **Status:** GPU evaluation complete (NVIDIA T4, Colab). See
+> [Results](#results) for final metrics.
 
 ---
 
@@ -106,20 +106,30 @@ Runs fully on CPU (no model weights required).
 
 ## Results
 
-_Pending GPU run._ Once `src/evaluate.py` executes on Colab, the following
-artifacts are produced:
+Evaluation completed on a single NVIDIA T4 (Google Colab), fp16, greedy
+decoding, 150 items per model.
 
 | Artifact | Path | Status |
 |---|---|---|
-| Per-item predictions | `results/eval_results.json` | ⬜ pending |
-| Aggregate metrics | `results/summary_metrics.csv` | ⬜ pending |
-| CMI degradation chart | `assets/cmi_degradation.png` | ⬜ pending |
-| Error taxonomy chart | `assets/error_taxonomy.png` | ⬜ pending |
+| Per-item predictions | `results/eval_results.json` | ✅ committed |
+| Aggregate metrics | `results/summary_metrics.csv` | ✅ committed |
+| CMI degradation chart | `assets/cmi_degradation.png` | ✅ committed |
+| Error taxonomy chart | `assets/error_taxonomy.png` | ✅ committed |
 
-| Model | EM Acc | NMatch Acc | Cosine Sim | ms/token | CMI Drop |
-|---|---|---|---|---|---|
-| SmolLM2-1.7B-Instruct | _TBD_ | _TBD_ | _TBD_ | _TBD_ | _TBD_ |
-| Qwen2.5-1.5B-Instruct | _TBD_ | _TBD_ | _TBD_ | _TBD_ | _TBD_ |
+### Aggregate metrics
+
+| Model | N | EM Acc | NMatch Acc | Cosine Sim | ms/token | CMI Drop |
+|---|---|---|---|---|---|---|
+| SmolLM2-1.7B-Instruct | 150 | 0.0533 | 0.0933 | 0.3281 | 13.199 | 0.0000 |
+| Qwen2.5-1.5B-Instruct | 150 | 0.1267 | 0.2200 | 0.4036 | 12.631 | 0.1000 |
+
+**Observations.** Both sub-2B models struggle with code-mixed Hinglish:
+normalized-match accuracy stays below 22%. `Qwen2.5-1.5B-Instruct` leads on
+every metric — roughly **2.4×** the EM accuracy and **+0.076** higher mean
+cosine similarity — while maintaining comparable latency (~12.6–13.2 ms/token).
+The CMI robustness drop is small for both models (0.00 / 0.10), suggesting
+errors are distributed across tiers rather than concentrated at high code-mixing;
+per-tier breakdowns are in `results/eval_results.json` and the dashboard.
 
 ## Citation
 
