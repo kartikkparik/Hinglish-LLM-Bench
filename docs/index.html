@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hinglish-LLM-Bench — Research Dashboard</title>
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="eyebrow">Code-Mixed Evaluation · Romanized Hindi × English</p>
+    <h1>Hinglish-LLM-Bench</h1>
+    <p class="subtitle">
+      Evaluating Small Language Models on Code-Mixed Hinglish Reasoning &amp;
+      Instruction Following — 150 prompts · 3 CMI tiers · 2 models
+    </p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div id="pending-banner" class="pending-banner hidden">
+    <strong>Pending GPU Run.</strong>
+    Results have not been generated yet. Run
+    <code>python src/evaluate.py</code> on a GPU (e.g. Google Colab T4) and commit
+    <code>results/</code> to populate the leaderboard and charts.
+  </div>
+
+  <section class="leaderboard">
+    <h2>Leaderboard</h2>
+    <div id="leaderboard-table" class="table-wrap">
+      <p class="muted">Waiting for results…</p>
+    </div>
+  </section>
+
+  <section class="charts">
+    <h2>Results Overview</h2>
+    <div class="chart-grid">
+      <figure class="card">
+        <figcaption>Accuracy by CMI Tier</figcaption>
+        <canvas id="chart-cmi"></canvas>
+      </figure>
+      <figure class="card">
+        <figcaption>Semantic Similarity</figcaption>
+        <canvas id="chart-cosine"></canvas>
+      </figure>
+      <figure class="card">
+        <figcaption>Latency (ms / token)</figcaption>
+        <canvas id="chart-latency"></canvas>
+      </figure>
+    </div>
+  </section>
+
+  <section class="explorer">
+    <h2>Prompt Explorer <span class="muted" id="explorer-count"></span></h2>
+    <div class="controls">
+      <input id="f-search" type="search" placeholder="Search prompts…">
+      <select id="f-model"><option value="">All models</option></select>
+      <select id="f-category">
+        <option value="">All categories</option>
+        <option value="reasoning">Reasoning</option>
+        <option value="comprehension">Comprehension</option>
+        <option value="intent_sarcasm">Intent &amp; Sarcasm</option>
+      </select>
+      <select id="f-tier">
+        <option value="">All CMI tiers</option>
+        <option value="low">Low (~15% Hindi)</option>
+        <option value="medium">Medium (~40% Hindi)</option>
+        <option value="high">High (~70% Hindi)</option>
+      </select>
+      <select id="f-correct">
+        <option value="">All results</option>
+        <option value="correct">Correct only</option>
+        <option value="incorrect">Incorrect only</option>
+      </select>
+    </div>
+    <div class="table-wrap tall">
+      <table id="explorer-table">
+        <thead>
+          <tr>
+            <th>ID</th><th>Category</th><th>CMI</th><th>Prompt</th>
+            <th>Gold</th><th>Model</th><th>Pred</th><th>Score</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap muted">
+    Hinglish-LLM-Bench · generated benchmark data · results pending GPU evaluation
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

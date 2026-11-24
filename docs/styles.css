@@ -1,0 +1,178 @@
+/* Hinglish-LLM-Bench — Distill.pub / Papers With Code editorial aesthetic */
+
+:root {
+  --bg: #FAF9F6;
+  --ink: #111827;
+  --ink-soft: #374151;
+  --muted: #6B7280;
+  --line: #E5E2DA;
+  --card: #FFFFFF;
+  --accent: #2563EB;
+  --accent-2: #D97706;
+  --good: #059669;
+  --bad: #DC2626;
+  --serif: Georgia, "Times New Roman", serif;
+  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+/* ---------- header ---------- */
+.site-header {
+  border-bottom: 1px solid var(--line);
+  padding: 56px 0 40px;
+  background:
+    radial-gradient(1200px 300px at 80% -50%, #EFF4FF 0%, transparent 60%),
+    var(--bg);
+}
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 12px;
+}
+.site-header h1 {
+  font-family: var(--serif);
+  font-size: 44px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 10px;
+}
+.subtitle { color: var(--ink-soft); max-width: 640px; margin: 0; font-size: 16px; }
+
+/* ---------- sections ---------- */
+section { margin: 48px 0; }
+h2 {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 600;
+  margin: 0 0 18px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--ink);
+  display: inline-block;
+}
+.muted { color: var(--muted); font-size: 13px; font-weight: 400; }
+
+/* ---------- pending banner ---------- */
+.pending-banner {
+  border: 1px dashed var(--accent-2);
+  background: #FFF7E6;
+  color: #7C4A03;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 24px 0 0;
+  font-size: 14px;
+}
+.pending-banner.hidden { display: none; }
+.pending-banner code, td code, .table-wrap code {
+  font-family: var(--mono);
+  font-size: 12px;
+  background: #F3F1EA;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+/* ---------- tables ---------- */
+.table-wrap {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.table-wrap.tall { max-height: 560px; overflow: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td {
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+th {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: #F7F6F2;
+  position: sticky; top: 0;
+}
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover { background: #F7F6F2; }
+.prompt-cell { max-width: 380px; }
+
+/* ---------- tier chips ---------- */
+.tier {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #F3F1EA;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+.tier-low { border-color: #BBF7D0; background: #ECFDF5; color: #065F46; }
+.tier-medium { border-color: #FDE68A; background: #FFFBEB; color: #92400E; }
+.tier-high { border-color: #FECACA; background: #FEF2F2; color: #991B1B; }
+
+/* ---------- charts ---------- */
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 18px;
+}
+.card figcaption {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+.card canvas { max-height: 260px; }
+
+/* ---------- explorer controls ---------- */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.controls input, .controls select {
+  font: inherit;
+  font-size: 13px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--ink);
+}
+.controls input[type="search"] { flex: 1 1 260px; }
+
+/* ---------- footer ---------- */
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 28px 0 48px;
+  margin-top: 32px;
+}
