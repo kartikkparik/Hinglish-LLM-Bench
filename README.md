@@ -23,7 +23,7 @@ similarity, token-level latency, and a CMI robustness drop metric, and publish
 an error taxonomy covering idiom mistranslation, negation/scope confusion,
 entity/number hallucination, and language drift.
 
-> **Status:** GPU evaluation complete (NVIDIA T4, Colab). See
+> **Status:** GPU evaluation complete (NVIDIA T4 GPU). See
 > [Results](#results) for final metrics.
 
 ---
@@ -72,6 +72,7 @@ Or manually:
 ```python
 # In a Colab notebook cell:
 !git clone https://github.com/kartikkparik/Hinglish-LLM-Bench.git
+
 %cd Hinglish-LLM-Bench
 !pip install -r requirements.txt
 !python src/evaluate.py            # ~10–20 min on a T4 for both models
@@ -137,7 +138,7 @@ per-tier breakdowns are in `results/eval_results.json` and the dashboard.
 @misc{hinglishllmbench2026,
   title  = {Hinglish-LLM-Bench: Evaluating Small Language Models on
             Code-Mixed Hinglish Reasoning and Instruction Following},
-  author = {Parik, Kartik},
+  author = {Pareek, Kartik},
   year   = {2026},
   howpublished = {\url{https://github.com/kartikkparik/Hinglish-LLM-Bench}}
 }
